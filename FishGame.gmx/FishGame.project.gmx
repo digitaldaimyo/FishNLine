@@ -11,6 +11,7 @@
     <sprite>sprites\spr_greenFish</sprite>
     <sprite>sprites\spr_orangeFish</sprite>
     <sprite>sprites\spr_splash</sprite>
+    <sprite>sprites\spr_water1</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -27,12 +28,15 @@
     <objects name="Controller">
       <object>objects\obj_controller</object>
     </objects>
+    <objects name="BACKGROUNDS">
+      <object>objects\obj_water1</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\fishingScreen</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41879.9642153356</constant>
+    <constant name="GM_build_date">41880.1040666204</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

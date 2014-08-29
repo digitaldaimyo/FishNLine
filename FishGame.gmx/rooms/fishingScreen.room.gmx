@@ -8,9 +8,16 @@
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
-  <colour>12632256</colour>
+  <colour>15189639</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>for (i = 0; i&lt;=room_width+32 i+=32;)
+{
+    for (i2 = 0; i2&lt;=room_height+32 i2+=32;)
+    {
+        instance_create(i, i2, obj_water1);
+    }
+
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
