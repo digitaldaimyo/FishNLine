@@ -25,50 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize();
+            <string>direction = 0;
+speed = 0;
+friction = .025;
 
-jumpDelay = 30;
-jumpDuration = 70;
-counter = 0;
-gridSize = 4;
+fog_color = make_color_rgb(222,244,255);
 
-var newColor = irandom(2);
-newX = 0;
-newY = 0;
-gridCounterX = 0;
-gridCounterY = 1;
-
-//centerX = global.ResolutionX/2;
-centerY = global.ResolutionY/2;
-offSetY = centerY - (global.ResolutionY - global.ResolutionX)/2;
-spacing = global.ResolutionX/gridSize + 1;
-
-for(i = 0; i &lt; (gridSize * gridSize); i++){
-    newColor = irandom(2);
-    gridCounterX += 1;
-    if(gridCounterX &gt; gridSize){
-        gridCounterX = 1;
-        gridCounterY += 1;
-    }
-    
-    newX = spacing * gridCounterX - spacing/2;
-    newY = offSetY + spacing * gridCounterY;
-    
-    //to store new fish
-    var newFish = instance_create(newX,newY,obj_fish);
-    var newSprite;
-
-    newSprite = scr_setFishSprite(newColor);
-
-    //set the new fish's properties
-    with(newFish){
-        myColor = newColor;
-        sprite_index = newSprite;
-    }
-}
+d3d_start();
+d3d_set_hidden(true);
+d3d_set_lighting(true);
+d3d_set_culling(false);
+d3d_set_fog(true,fog_color,300,350);
+d3d_light_define_direction(1,7.5,11.5,-7,c_white);
+d3d_light_enable(1,true);
 
 
+z = 4;
+max_speed = 1;
+move_dir = direction;
 
+instance_create(x,y,obj_sky);
+instance_create(x,y,obj_water);
 </string>
           </argument>
         </arguments>
@@ -91,27 +68,58 @@ for(i = 0; i &lt; (gridSize * gridSize); i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>counter++
+            <string>if (speed &gt; max_speed){speed = max_speed;}
+//direction = move_dir;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>d3d_end();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>direction = point_direction(x,y,192,192);
+d3d_set_projection(x,y,z,x+cos(direction*pi/180),y-sin(direction*pi/180),z,0,0,1);
+d3d_light_enable(1,true);
+draw_set_color(c_white);
 
-if(counter &gt; jumpDelay + jumpDuration){
-    with(obj_fish){
-        JUMPING = false;
-        visible = false;
-        newColor = irandom(2);
-        sprite_index = scr_setFishSprite(newColor);
-        myColor = newColor;
-        
-        newSplash = instance_create(self.x,self.y,obj_splash);
-    }
-    counter = 0;
-}else if(counter = jumpDelay){
-    with(obj_fish){
-        JUMPING = true;
-        visible = true;
-        
-        newSplash = instance_create(self.x,self.y,obj_splash);
-    }
-}
 </string>
           </argument>
         </arguments>

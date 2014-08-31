@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-20</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,50 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize();
+            <string>water_tex1 = background_get_texture(bg_water1);
+water_tex2 = background_get_texture(bg_water2);
+water_color = make_color_rgb(120,210,250);
 
-jumpDelay = 30;
-jumpDuration = 70;
-counter = 0;
-gridSize = 4;
-
-var newColor = irandom(2);
-newX = 0;
-newY = 0;
-gridCounterX = 0;
-gridCounterY = 1;
-
-//centerX = global.ResolutionX/2;
-centerY = global.ResolutionY/2;
-offSetY = centerY - (global.ResolutionY - global.ResolutionX)/2;
-spacing = global.ResolutionX/gridSize + 1;
-
-for(i = 0; i &lt; (gridSize * gridSize); i++){
-    newColor = irandom(2);
-    gridCounterX += 1;
-    if(gridCounterX &gt; gridSize){
-        gridCounterX = 1;
-        gridCounterY += 1;
-    }
-    
-    newX = spacing * gridCounterX - spacing/2;
-    newY = offSetY + spacing * gridCounterY;
-    
-    //to store new fish
-    var newFish = instance_create(newX,newY,obj_fish);
-    var newSprite;
-
-    newSprite = scr_setFishSprite(newColor);
-
-    //set the new fish's properties
-    with(newFish){
-        myColor = newColor;
-        sprite_index = newSprite;
-    }
-}
-
-
-
+offset = 0;
 </string>
           </argument>
         </arguments>
@@ -91,27 +52,49 @@ for(i = 0; i &lt; (gridSize * gridSize); i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>counter++
-
-if(counter &gt; jumpDelay + jumpDuration){
-    with(obj_fish){
-        JUMPING = false;
-        visible = false;
-        newColor = irandom(2);
-        sprite_index = scr_setFishSprite(newColor);
-        myColor = newColor;
-        
-        newSplash = instance_create(self.x,self.y,obj_splash);
-    }
-    counter = 0;
-}else if(counter = jumpDelay){
-    with(obj_fish){
-        JUMPING = true;
-        visible = true;
-        
-        newSplash = instance_create(self.x,self.y,obj_splash);
-    }
-}
+            <string>offset += .1;
+if (offset &gt;= 12){offset = 0;}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//draw water
+d3d_set_lighting(false);
+d3d_set_culling(false);
+draw_set_color(water_color);
+draw_set_alpha(.15);
+d3d_draw_floor(x-400,y-400,-2,x+400,y+400,-2,-1,0,0);
+draw_set_color(c_white);
+draw_set_blend_mode(bm_add);
+//d3d_draw_ellipsoid(-1,-1,1,1,1,2,water_tex2,1,1,16);
+draw_set_alpha(.05);
+d3d_draw_floor(x-600+offset,y-600,-2,x+600+offset,y+600,-2,water_tex2,100,100);
+draw_set_alpha(.1);
+d3d_draw_floor(x-600,y-600+offset,-1.5,x+600,y+600+offset,-1.5,water_tex1,100,100);
+d3d_draw_floor(x-600+offset,y-600+offset,-1,x+600+offset,y+600+offset,-1,water_tex1,100,100);
+draw_set_blend_mode(bm_normal);
+d3d_set_culling(true);
+d3d_set_lighting(true);
+draw_set_color(c_white);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

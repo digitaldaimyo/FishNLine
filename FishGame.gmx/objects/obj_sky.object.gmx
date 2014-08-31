@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,56 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize();
-
-jumpDelay = 30;
-jumpDuration = 70;
-counter = 0;
-gridSize = 4;
-
-var newColor = irandom(2);
-newX = 0;
-newY = 0;
-gridCounterX = 0;
-gridCounterY = 1;
-
-//centerX = global.ResolutionX/2;
-centerY = global.ResolutionY/2;
-offSetY = centerY - (global.ResolutionY - global.ResolutionX)/2;
-spacing = global.ResolutionX/gridSize + 1;
-
-for(i = 0; i &lt; (gridSize * gridSize); i++){
-    newColor = irandom(2);
-    gridCounterX += 1;
-    if(gridCounterX &gt; gridSize){
-        gridCounterX = 1;
-        gridCounterY += 1;
-    }
-    
-    newX = spacing * gridCounterX - spacing/2;
-    newY = offSetY + spacing * gridCounterY;
-    
-    //to store new fish
-    var newFish = instance_create(newX,newY,obj_fish);
-    var newSprite;
-
-    newSprite = scr_setFishSprite(newColor);
-
-    //set the new fish's properties
-    with(newFish){
-        myColor = newColor;
-        sprite_index = newSprite;
-    }
-}
-
-
-
+            <string>sky_tex = background_get_texture(bg_sky1);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -91,27 +48,18 @@ for(i = 0; i &lt; (gridSize * gridSize); i++){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>counter++
+            <string>draw_set_color(c_white);
+draw_set_alpha(1);
+d3d_set_culling(false);
+d3d_set_lighting(false);
+d3d_set_fog(false,camera.fog_color,300,350);
+d3d_draw_ellipsoid(camera.x-400,camera.y-400,-200,camera.x+400,camera.y+400,200,sky_tex,1,1,16);
+d3d_set_fog(true,camera.fog_color,300,350);
+d3d_set_lighting(true);
+d3d_set_culling(true);
 
-if(counter &gt; jumpDelay + jumpDuration){
-    with(obj_fish){
-        JUMPING = false;
-        visible = false;
-        newColor = irandom(2);
-        sprite_index = scr_setFishSprite(newColor);
-        myColor = newColor;
-        
-        newSplash = instance_create(self.x,self.y,obj_splash);
-    }
-    counter = 0;
-}else if(counter = jumpDelay){
-    with(obj_fish){
-        JUMPING = true;
-        visible = true;
-        
-        newSplash = instance_create(self.x,self.y,obj_splash);
-    }
-}
+draw_set_color(c_white);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>
