@@ -8,11 +8,13 @@
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
-  <colour>15189639</colour>
+  <colour>4210688</colour>
   <showcolour>-1</showcolour>
-  <code>for (i = 0; i&lt;=room_width+32 i+=32;)
+  <code>//This will tile a background match sizes (ie:64) with sprite size
+
+for (i = 0; i&lt;=room_width+64 i+=64;)
 {
-    for (i2 = 0; i2&lt;=room_height+32 i2+=32;)
+    for (i2 = 0; i2&lt;=room_height+64 i2+=64;)
     {
         instance_create(i, i2, obj_water1);
     }
@@ -38,7 +40,7 @@
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="" x="0" y="2" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
