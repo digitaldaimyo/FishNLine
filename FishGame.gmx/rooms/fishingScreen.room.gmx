@@ -8,9 +8,9 @@
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
-  <colour>8421376</colour>
+  <colour>13610627</colour>
   <showcolour>-1</showcolour>
-  <code>/*This will tile a background match sizes (ie:64) with sprite size
+  <code>//This will tile a background match sizes (ie:64) with sprite size
 
 for (i = 0; i&lt;=room_width+64 i+=64;)
 {
@@ -19,9 +19,7 @@ for (i = 0; i&lt;=room_width+64 i+=64;)
         instance_create(i, i2, obj_water1);
     }
 
-}
-
-*/</code>
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
