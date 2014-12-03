@@ -13,8 +13,16 @@
     <sprite>sprites\spr_splash</sprite>
     <sprite>sprites\spr_water1</sprite>
     <sprite>sprites\spr_lineSegment</sprite>
+    <sprite>sprites\spr_water2</sprite>
+    <sprite>sprites\spr_3DFishy</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\water1</background>
+    <background>background\water2</background>
+    <background>background\bg_water1</background>
+    <background>background\bg_sky1</background>
+    <background>background\bg_water2</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_setFishSprite.gml</script>
@@ -32,13 +40,18 @@
     </objects>
     <objects name="BACKGROUNDS">
       <object>objects\obj_water1</object>
+      <object>objects\obj_waterShader</object>
     </objects>
+    <object>objects\camera</object>
+    <object>objects\obj_sky</object>
+    <object>objects\obj_water</object>
+    <object>objects\obj_Fish3D</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\fishingScreen</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41881.1124526042</constant>
+    <constant name="GM_build_date">41883.6242122222</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
