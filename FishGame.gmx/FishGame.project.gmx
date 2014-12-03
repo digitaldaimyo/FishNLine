@@ -12,6 +12,7 @@
     <sprite>sprites\spr_orangeFish</sprite>
     <sprite>sprites\spr_splash</sprite>
     <sprite>sprites\spr_water1</sprite>
+    <sprite>sprites\spr_lineSegment</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -20,6 +21,7 @@
     <script>scripts\scr_setGlobals.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\obj_lineSegment</object>
     <object>objects\obj_splash</object>
     <object>objects\obj_fish</object>
     <objects name="Managers">
@@ -36,7 +38,7 @@
     <room>rooms\fishingScreen</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41880.1040666204</constant>
+    <constant name="GM_build_date">41881.1124526042</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

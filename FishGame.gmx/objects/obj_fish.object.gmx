@@ -34,6 +34,48 @@ JUMPING = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if mouse_check_button(mb_left){
+
+    if(ds_list_find_index(global.nodeList,self) == -1){
+        global.slotone = ds_list_find_index(global.nodeList,self);
+        ds_list_add(global.nodeList, self);        
+        
+        if(ds_list_size(global.nodeList) &gt; 1){
+        global.inhere = true;
+            prevNode = ds_list_find_value(global.nodeList, ds_list_size(global.nodeList)-1);
+            midX = self.x + (self.x - prevNode.x)/2;
+            midY = self.y + (self.y - prevNode.y)/2;
+            lineSegment = instance_create(midX,midY,obj_lineSegment);
+            
+            with(lineSegment){
+                image_angle = point_direction(self.x, self.y, prevNode.x, prevNode.y);
+            }
+        }
+    }
+}
+ 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
